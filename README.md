@@ -5,9 +5,9 @@ Based on the idea from [vue-render-on-scroll
 ](https://github.com/petr-nazarov/vue-render-on-scroll) and adopted for SSR usage in Nuxt.js:
 Adding `v-if="false"` to the content of the component as long as the component is not in the current viewport or while in SSR mode. 
 
-Nevertheless it should still be usable independent of Nuxt via stock Vue.
+Nevertheless, it should still be usable independent of Nuxt with stock Vue.
 
-## install
+## Install
 ```sh 
 yarn add nuxt-render-on-scroll
 # OR
@@ -27,7 +27,7 @@ export default {
 ## Simple Usage
 ```html
 <render-on-scroll>
-  <div>This content will be loaded only when it enters viewport</div>
+  <div>This content will be renderd only when it enters viewport</div>
 </render-on-scroll>
 ```
 
@@ -45,7 +45,7 @@ export default {
 ## Configuration Options
 | prop        | type           | default  | comments |
 | ------------|:--------------:| --------:| ---------|
-| height       | String         | ''        |   CSS string for height property of the wrapping div. Useful to preserve the space while to content is not rendered yet. Can be used in combination with a negative value `offsetY` render only when scrolled into the content area, e.g. for large charts.     |
+| height       | String         | ''        |   CSS string for height property of the wrapping div. Useful to preserve the space while to content is not rendered yet. Can be used in combination with a negative value `offsetY` render only when scrolled into the content area, e.g., for large charts.     |
 | offsetY    | Number         | 0        |  Additional amount of pixel to be added on the content's bounds. E.g. value of 100 will render the content when scrolled within 100px _near_ it.        |
 
 ## Development
