@@ -43,7 +43,7 @@
   },
   "author": "Michael Dell",
   "repository": {
-    "url": "git+https://github.com/Michi-4G/nuxt-render-on-scroll",
+    "url": "git+https://github.com/dell-mic/nuxt-render-on-scroll",
     "type": "git"
   },
   "license": "MIT"
