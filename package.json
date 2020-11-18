@@ -1,6 +1,6 @@
 {
   "name": "nuxt-render-on-scroll",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A Vue/Nuxt component that allows you to lazily render components only when they are scrolled into the viewport.",
   "main": "dist/render-on-scroll.ssr.js",
   "browser": "dist/render-on-scroll.esm.js",
