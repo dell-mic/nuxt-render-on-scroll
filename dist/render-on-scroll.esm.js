@@ -44,6 +44,13 @@ var script = {
     }
   },
 
+  beforeDestroy() {
+    // console.log("beforeDestroy", this.interval);
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  },
+
   methods: {
     isInViewport() {
       if (!this.$el || typeof window === 'undefined') return false;
@@ -63,10 +70,12 @@ var script = {
     },
 
     addListner() {
-      const interval = setInterval(() => {
+      this.interval = setInterval(() => {
+        // console.log(this.isInViewport());
         if (this.isInViewport()) {
           this.render = true;
-          clearInterval(interval);
+          clearInterval(this.interval);
+          this.interval = null;
         }
       }, 200);
     }

@@ -39,6 +39,12 @@ var script = {
       this.addListner();
     }
   },
+  beforeDestroy: function beforeDestroy() {
+    // console.log("beforeDestroy", this.interval);
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  },
   methods: {
     isInViewport: function isInViewport() {
       if (!this.$el || typeof window === 'undefined') return false;
@@ -59,10 +65,12 @@ var script = {
     addListner: function addListner() {
       var _this = this;
 
-      var interval = setInterval(function () {
+      this.interval = setInterval(function () {
+        // console.log(this.isInViewport());
         if (_this.isInViewport()) {
           _this.render = true;
-          clearInterval(interval);
+          clearInterval(_this.interval);
+          _this.interval = null;
         }
       }, 200);
     }
@@ -165,7 +173,7 @@ var __vue_inject_styles__ = undefined;
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-8199a2c2";
+var __vue_module_identifier__ = "data-v-be813aa8";
 /* functional template */
 
 var __vue_is_functional_template__ = false;
