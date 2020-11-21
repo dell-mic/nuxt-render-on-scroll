@@ -40,6 +40,12 @@ export default {
       this.addListner()
     }
   },
+  beforeDestroy() {
+    // console.log("beforeDestroy", this.interval);
+    if (this.interval) {
+      clearInterval(this.interval)
+    }
+  },
   methods: {
     isInViewport() {
       if (!this.$el || typeof window === 'undefined') return false
@@ -65,10 +71,12 @@ export default {
       return topInViewPort || bottomInViewPort
     },
     addListner() {
-      const interval = setInterval(() => {
+      this.interval = setInterval(() => {
+        // console.log(this.isInViewport());
         if (this.isInViewport()) {
           this.render = true
-          clearInterval(interval)
+          clearInterval(this.interval)
+          this.interval = null
         }
       }, 200)
     },
