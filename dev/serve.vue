@@ -1,20 +1,20 @@
 <script>
-import Vue from "vue";
-import RenderOnScroll from "@/render-on-scroll.vue";
+import Vue from 'vue'
+import RenderOnScroll from '@/render-on-scroll.vue'
 
 export default Vue.extend({
-  name: "ServeDev",
+  name: 'ServeDev',
   components: {
     RenderOnScroll,
   },
-  data: function() {
+  data: function () {
     return {
       contents: [...Array(50).keys()].map((i) => ({
-        text: "sample content #" + i,
+        text: 'sample content #' + i,
       })),
-    };
+    }
   },
-});
+})
 </script>
 
 <template>
@@ -32,6 +32,13 @@ export default Vue.extend({
   height: 100px;
   animation: fadein 3s;
   text-align: center;
+  line-height: 100px;
+  border-color: black;
+  border-width: 1px;
+  border-style: dotted;
+  border-radius: 5px;
+  margin: 1rem;
+  font-family: sans-serif;
 }
 
 @keyframes fadein {
