@@ -51,12 +51,26 @@ export default {
 </render-on-scroll>
 ```
 
+## Placeholder Support
+A placeholder can also be shown before the scroll reaches the element. This will be usefull if you want to show something else while the component is rendering or if you are fetching asynchronous data from.
+```html
+<render-on-scroll>
+  <template #placeholder>
+    <div>
+      This content will be rendered before scroll reaches the main element. 
+    </div>
+  </template>
+  <div>This content will be renderd only when it enters viewport</div>
+</render-on-scroll>
+```
+
+
 ## Configuration Options
 
 | prop    |  type  | default | comments                                                                                                                                                                                                                                                   |
 | ------- | :----: | ------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | height  | String |      '' | CSS string for height property of the wrapping div. Useful to preserve the space while to content is not rendered yet. Can be used in combination with a negative value `offsetY` render only when scrolled into the content area, e.g., for large charts. |
-| offsetY | Number |       0 | Additional amount of pixel to be added on the content's bounds. E.g. value of 100 will render the content when scrolled within 100px _near_ it.                                                                                                            |
+| offsetY | Number |       0 | Additional amount of pixel to be added on the content's bounds. E.g. value of 100 will render the content when scrolled within 100px _near_ it.       
 
 ## Development
 
