@@ -6,6 +6,9 @@
 //
 //
 //
+//
+//
+//
 var script = {
   name: 'RenderOnScroll',
   props: {
@@ -161,7 +164,7 @@ var __vue_render__ = function __vue_render__() {
 
   return _c('div', {
     style: _vm.styles
-  }, [_vm.render ? [_vm._t("default")] : _vm._e()], 2);
+  }, [!_vm.render ? [_vm._t("placeholder")] : _vm._e(), _vm._ssrNode(" "), _vm.render ? [_vm._t("default")] : _vm._e()], 2);
 };
 
 var __vue_staticRenderFns__ = [];
@@ -173,7 +176,7 @@ var __vue_inject_styles__ = undefined;
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-be813aa8";
+var __vue_module_identifier__ = "data-v-5b258cce";
 /* functional template */
 
 var __vue_is_functional_template__ = false;

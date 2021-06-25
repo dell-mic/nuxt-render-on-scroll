@@ -20,6 +20,9 @@ export default Vue.extend({
 <template>
   <div id="app">
     <render-on-scroll height="100px" v-for="item in contents" :key="item.text">
+      <template #placeholder>
+        <div class="placeholder">Loading Content ...</div>
+      </template>
       <div class="sampleContent">
         {{ item.text }}
       </div>
@@ -31,6 +34,19 @@ export default Vue.extend({
 .sampleContent {
   height: 100px;
   animation: fadein 3s;
+  text-align: center;
+  line-height: 100px;
+  border-color: black;
+  border-width: 1px;
+  border-style: dotted;
+  border-radius: 5px;
+  margin: 1rem;
+  font-family: sans-serif;
+}
+
+.placeholder {
+  height: 100px;
+  background: #d6d6d6;
   text-align: center;
   line-height: 100px;
   border-color: black;

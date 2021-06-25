@@ -6,6 +6,9 @@
 //
 //
 //
+//
+//
+//
 var script = {
   name: 'RenderOnScroll',
   props: {
@@ -171,7 +174,7 @@ var __vue_render__ = function () {
 
   return _c('div', {
     style: _vm.styles
-  }, [_vm.render ? [_vm._t("default")] : _vm._e()], 2);
+  }, [!_vm.render ? [_vm._t("placeholder")] : _vm._e(), _vm._v(" "), _vm.render ? [_vm._t("default")] : _vm._e()], 2);
 };
 
 var __vue_staticRenderFns__ = [];

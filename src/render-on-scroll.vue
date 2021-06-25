@@ -1,5 +1,8 @@
 <template>
   <div :style="styles">
+    <template v-if="!render">
+      <slot name="placeholder" />
+    </template>
     <template v-if="render">
       <slot />
     </template>
