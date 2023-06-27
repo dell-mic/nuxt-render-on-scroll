@@ -10,7 +10,9 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue'
+
+export default /*#__PURE__*/ defineComponent({
   name: 'RenderOnScroll',
   props: {
     height: {
@@ -43,8 +45,7 @@ export default {
       this.addListner()
     }
   },
-  beforeDestroy() {
-    // console.log("beforeDestroy", this.interval);
+  beforeUnmount() {
     if (this.interval) {
       clearInterval(this.interval)
     }
@@ -84,7 +85,7 @@ export default {
       }, 200)
     },
   },
-}
+})
 </script>
 
 <style></style>

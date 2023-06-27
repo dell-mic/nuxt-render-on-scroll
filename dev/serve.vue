@@ -1,8 +1,8 @@
 <script>
-import Vue from 'vue'
+import {defineComponent} from 'vue'
 import RenderOnScroll from '@/render-on-scroll.vue'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'ServeDev',
   components: {
     RenderOnScroll,

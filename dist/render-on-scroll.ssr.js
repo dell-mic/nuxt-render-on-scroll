@@ -1,15 +1,52 @@
-'use strict';Object.defineProperty(exports,'__esModule',{value:true});//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script = {
+'use strict';var vue=require('vue');function _iterableToArrayLimit(arr, i) {
+  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
+  if (null != _i) {
+    var _s,
+      _e,
+      _x,
+      _r,
+      _arr = [],
+      _n = !0,
+      _d = !1;
+    try {
+      if (_x = (_i = _i.call(arr)).next, 0 === i) {
+        if (Object(_i) !== _i) return;
+        _n = !1;
+      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
+    } catch (err) {
+      _d = !0, _e = err;
+    } finally {
+      try {
+        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+    return _arr;
+  }
+}
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+  return arr2;
+}
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}var script = /*#__PURE__*/vue.defineComponent({
   name: 'RenderOnScroll',
   props: {
     height: {
@@ -42,8 +79,7 @@ var script = {
       this.addListner();
     }
   },
-  beforeDestroy: function beforeDestroy() {
-    // console.log("beforeDestroy", this.interval);
+  beforeUnmount: function beforeUnmount() {
     if (this.interval) {
       clearInterval(this.interval);
     }
@@ -67,7 +103,6 @@ var script = {
     },
     addListner: function addListner() {
       var _this = this;
-
       this.interval = setInterval(function () {
         // console.log(this.isInViewport());
         if (_this.isInViewport()) {
@@ -78,150 +113,39 @@ var script = {
       }, 200);
     }
   }
-};function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-    if (typeof shadowMode !== 'boolean') {
-        createInjectorSSR = createInjector;
-        createInjector = shadowMode;
-        shadowMode = false;
-    }
-    // Vue.extend constructor export interop.
-    const options = typeof script === 'function' ? script.options : script;
-    // render functions
-    if (template && template.render) {
-        options.render = template.render;
-        options.staticRenderFns = template.staticRenderFns;
-        options._compiled = true;
-        // functional template
-        if (isFunctionalTemplate) {
-            options.functional = true;
-        }
-    }
-    // scopedId
-    if (scopeId) {
-        options._scopeId = scopeId;
-    }
-    let hook;
-    if (moduleIdentifier) {
-        // server build
-        hook = function (context) {
-            // 2.3 injection
-            context =
-                context || // cached call
-                    (this.$vnode && this.$vnode.ssrContext) || // stateful
-                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
-            // 2.2 with runInNewContext: true
-            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-                context = __VUE_SSR_CONTEXT__;
-            }
-            // inject component styles
-            if (style) {
-                style.call(this, createInjectorSSR(context));
-            }
-            // register component module identifier for async chunk inference
-            if (context && context._registeredComponents) {
-                context._registeredComponents.add(moduleIdentifier);
-            }
-        };
-        // used by ssr in case component is cached and beforeCreate
-        // never gets called
-        options._ssrRegister = hook;
-    }
-    else if (style) {
-        hook = shadowMode
-            ? function (context) {
-                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
-            }
-            : function (context) {
-                style.call(this, createInjector(context));
-            };
-    }
-    if (hook) {
-        if (options.functional) {
-            // register for functional component in vue file
-            const originalRender = options.render;
-            options.render = function renderWithStyleInjection(h, context) {
-                hook.call(context);
-                return originalRender(h, context);
-            };
-        }
-        else {
-            // inject component registration as beforeCreate hook
-            const existing = options.beforeCreate;
-            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-        }
-    }
-    return script;
-}/* script */
-var __vue_script__ = script;
-/* template */
+});function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return vue.openBlock(), vue.createElementBlock("div", {
+    style: vue.normalizeStyle(_ctx.styles)
+  }, [!_ctx.render ? vue.renderSlot(_ctx.$slots, "placeholder", {
+    key: 0
+  }) : vue.createCommentVNode("", true), _ctx.render ? vue.renderSlot(_ctx.$slots, "default", {
+    key: 1
+  }) : vue.createCommentVNode("", true)], 4);
+}script.render = render;// Import vue component
 
-var __vue_render__ = function __vue_render__() {
-  var _vm = this;
+// Default export is installable instance of component.
+// IIFE injects install function into component, allowing component
+// to be registered via Vue.use() as well as Vue.component(),
+var component = /*#__PURE__*/(function () {
+  // Get component instance
+  var installable = script;
 
-  var _h = _vm.$createElement;
+  // Attach install function executed by Vue.use()
+  installable.install = function (app) {
+    app.component('RenderOnScroll', installable);
+  };
+  return installable;
+})();
 
-  var _c = _vm._self._c || _h;
-
-  return _c('div', {
-    style: _vm.styles
-  }, [!_vm.render ? [_vm._t("placeholder")] : _vm._e(), _vm._ssrNode(" "), _vm.render ? [_vm._t("default")] : _vm._e()], 2);
-};
-
-var __vue_staticRenderFns__ = [];
-/* style */
-
-var __vue_inject_styles__ = undefined;
-/* scoped */
-
-var __vue_scope_id__ = undefined;
-/* module identifier */
-
-var __vue_module_identifier__ = "data-v-5b258cce";
-/* functional template */
-
-var __vue_is_functional_template__ = false;
-/* style inject */
-
-/* style inject SSR */
-
-/* style inject shadow dom */
-
-var __vue_component__ = /*#__PURE__*/normalizeComponent({
-  render: __vue_render__,
-  staticRenderFns: __vue_staticRenderFns__
-}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);// Import vue component
-
-var install = function installRenderOnScroll(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.component('RenderOnScroll', __vue_component__);
-}; // Create module definition for Vue.use()
-
-
-var plugin = {
-  install: install
-}; // To auto-install on non-es builds, when vue is found
-// eslint-disable-next-line no-redeclare
-
-/* global window, global */
-
-{
-  var GlobalVue = null;
-
-  if (typeof window !== 'undefined') {
-    GlobalVue = window.Vue;
-  } else if (typeof global !== 'undefined') {
-    GlobalVue = global.Vue;
-  }
-
-  if (GlobalVue) {
-    GlobalVue.use(plugin);
-  }
-} // Inject install function into component - allows component
-// to be registered via Vue.use() as well as Vue.component()
-
-
-__vue_component__.install = install; // Export component by default
+// It's possible to expose named exports when writing components that can
 // also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
-// export const RollupDemoDirective = component;
-exports.default=__vue_component__;
+// export const RollupDemoDirective = directive;
+var namedExports=/*#__PURE__*/Object.freeze({__proto__:null,'default':component});// Attach named exports directly to component. IIFE/CJS will
+// only expose one global var, with named exports exposed as properties of
+// that global var (eg. plugin.namedExport)
+Object.entries(namedExports).forEach(function (_ref) {
+  var _ref2 = _slicedToArray(_ref, 2),
+    exportName = _ref2[0],
+    exported = _ref2[1];
+  if (exportName !== 'default') component[exportName] = exported;
+});module.exports=component;
